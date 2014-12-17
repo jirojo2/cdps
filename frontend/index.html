@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="cdps" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="cdps" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="cdps" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="cdps" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CDPS Vídeos</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link rel="stylesheet" href="frontend/components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="frontend/components/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="frontend/app.css">
+</head>
+<body ng-controller="MainCtrl" class="ng-cloak">    
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" ng-click="isMenuCollapsed = !isMenuCollapsed">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/">CDPS Vídeos</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-collapse-1" collapse="isMenuCollapsed" ng-init="isMenuCollapsed=true">
+                <ul class="nav navbar-nav navbar-left">
+                    <li ng-class="{ active: isMenuActive('/') }"><a href="#/"><i class="fa fa-home"></i> Ver Vídeos</a></li>
+                    <li ng-class="{ active: isMenuActive('/upload') }" ng-show="isLoggedIn()"><a href="#/upload">Subir Vídeo</a></li>
+                    <li ng-class="{ active: isMenuActive('/login') }" ng-show="!isLoggedIn()"><a href="#/login">Acceder</a></li>
+                    <li ng-class="{ active: isMenuActive('/signup') }" ng-show="!isLoggedIn()"><a href="#/signup">Registro</a></li>
+                    <li ng-show="isLoggedIn()"><a ng-click="logout()">Salir</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" ng-show="actions.length">
+                    <li class="dropdown" dropdown>
+                        <a class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle>
+                            <i class="fa fa-cog"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="action in actions">
+                                <a href="{{action.url}}" ng-click="actionClick(action.click)" ng-show="action.url">{{action.text}}</a>
+                                <a ng-click="actionClick(action.click)" ng-show="!action.url">{{action.text}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>               
+                <form class="navbar-form navbar-right" role="search" ng-show="showFilter">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input type="text" class="form-control" ng-model="filter" placeholder="Search">
+                        </div>
+                    </div>
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="view">
+        <center ng-show="isAnyLoading()">
+            <i class="fa fa-spinner fa-4x fa-spin"></i>
+        </center>
+
+        <div ng-view ng-show="!isAnyLoading()"></div>
+    </div>
+        
+    <div class="footer">
+        <div class="container">
+            &copy; José Ignacio Rojo Rivero 2014
+        </div>
+    </div>
+
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+    <script src="frontend/components/angular/angular.min.js"></script>
+    <script src="frontend/components/angular-route/angular-route.min.js"></script>
+    <script src="frontend/components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="frontend/app.js"></script>
+    <script src="frontend/modules/auth/auth.js"></script>
+    <script src="frontend/modules/auth/login.js"></script>
+    <script src="frontend/modules/auth/signup.js"></script>
+    <script src="frontend/modules/videos/videos.js"></script>
+    <script src="frontend/modules/videos/list.js"></script>
+</body>
+</html>

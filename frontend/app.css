@@ -1,0 +1,22 @@
+body {
+    padding-top: 10px;
+    background-color: #eee;
+    overflow-y: scroll;
+}
+
+.view {
+    padding-top: 60px;
+    padding-bottom: 25px;
+    background-color: white;
+}
+
+.footer {
+    border-top: 2px solid #ccc;
+    background-color: #eee;
+    padding: 25px;
+    text-align: center;
+}
+
+li > a[ng-click] {
+    cursor: pointer;
+}

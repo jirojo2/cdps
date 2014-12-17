@@ -1,0 +1,16 @@
+<div class="text-center" style="max-width: 450px; margin-left: auto; margin-right: auto;">
+    <h1 class="page-header">
+        Acceso a la plataforma
+    </h1>
+    <form ng-submit="login()">
+        <input class="form-control input-lg" type="email" placeholder="email" ng-model="email">
+        <br/>
+        <input class="form-control input-lg" type="password" placeholder="pasword" ng-model="password">
+        <br/>
+        <input class="btn btn-block btn-primary btn-lg" type="submit" value="Acceder">
+        <br/>
+        <p class="alert alert-danger" ng-show="error">
+            {{ error }}
+        </p>
+    </form>
+</div>
