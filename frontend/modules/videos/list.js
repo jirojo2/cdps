@@ -17,4 +17,6 @@ angular.module('cdps.videos.list', ['ngRoute'])
         $scope.videos = list;
     });
 
+    $scope.$parent.showFilter = true;
+
 }]);

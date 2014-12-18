@@ -30,10 +30,10 @@
             <div class="collapse navbar-collapse" id="navbar-collapse-1" collapse="isMenuCollapsed" ng-init="isMenuCollapsed=true">
                 <ul class="nav navbar-nav navbar-left">
                     <li ng-class="{ active: isMenuActive('/') }"><a href="#/"><i class="fa fa-home"></i> Ver Vídeos</a></li>
-                    <li ng-class="{ active: isMenuActive('/upload') }" ng-show="isLoggedIn()"><a href="#/upload">Subir Vídeo</a></li>
-                    <li ng-class="{ active: isMenuActive('/login') }" ng-show="!isLoggedIn()"><a href="#/login">Acceder</a></li>
-                    <li ng-class="{ active: isMenuActive('/signup') }" ng-show="!isLoggedIn()"><a href="#/signup">Registro</a></li>
-                    <li ng-show="isLoggedIn()"><a ng-click="logout()">Salir</a></li>
+                    <li ng-class="{ active: isMenuActive('/upload') }" ng-show="isLoggedIn()"><a href="#/upload"><i class="fa fa-cloud-upload"></i> Subir Vídeo</a></li>
+                    <li ng-class="{ active: isMenuActive('/login') }" ng-show="!isLoggedIn()"><a href="#/login"><i class="fa fa-sign-in"></i> Acceder</a></li>
+                    <li ng-class="{ active: isMenuActive('/signup') }" ng-show="!isLoggedIn()"><a href="#/signup"><i class="fa fa-edit"></i> Registro</a></li>
+                    <li ng-show="isLoggedIn()"><a ng-click="logout()"><i class="fa fa-sign-out"></i> Salir</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" ng-show="actions.length">
                     <li class="dropdown" dropdown>
@@ -52,7 +52,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            <input type="text" class="form-control" ng-model="filter" placeholder="Search">
+                            <input type="text" class="form-control" ng-model="filter" placeholder="Buscar">
                         </div>
                     </div>
                 </form>
