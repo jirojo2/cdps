@@ -1,0 +1,30 @@
+<div class="container">
+
+	<h1 class="page-header"><i class="fa fa-cloud-upload"></i> Subir Vídeo</h1>
+
+	<h4>1. Seleccionar el archivo</h4>
+
+	<form ng-submit="upload()" ng-show="!phase">
+
+		<label>
+			<input type="file" id="file" onchange="angular.element(this).scope().fileNameChanged()">
+			Seleccionar el vídeo que se desea subir
+		</label>
+
+	</form>
+
+	<div ng-show="phase">
+
+		<div ng-show="phase >= 1">
+			<h4>2. Obtener un ID del servidor central</h4>
+			<i class="fa fa-spinner fa-spin fa-2x" ng-show="video.allocating"></i>
+			<p>ID: {{ video.id }}</p>
+		</div>
+		
+		<div ng-show="phase >= 2">
+			<h4>3. Subir el archivo a los servidores de video</h4>
+			<p>XX %</p>
+		</div>
+	</div>
+
+</div>

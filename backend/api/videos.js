@@ -41,6 +41,18 @@ videos.create = function(req, res) {
 	// al crear una entrada en la base de datos, obtendremos un ID para este nuevo video
 	// el backend de videos creará un fichero temporal con ese id, permitiendo así la subida directa
 	// desde el frontend usando dicho ID
+
+	var video = new Video();
+	video.save(function(err) {
+		if (err) {
+			return res.json({ code: 1, msg: 'error' });
+		}
+
+		// TODO: Allocate the video ID in the nas server
+		// just creating a .tmp file with the ID as name <ID>.tmp
+
+		res.json({ code: 0, id: video._id });
+	});
 }
 
 videos.download = function(req, res) {
