@@ -46,7 +46,18 @@ videos.create = function(req, res) {
 	// el backend de videos creará un fichero temporal con ese id, permitiendo así la subida directa
 	// desde el frontend usando dicho ID
 
-	var video = new Video();
+	var video_name = req.body.name || '';
+
+	// parseamos el nombre del fichero para obtener el formato
+	// video/<formato>, aceptando: mp4, ogg, webm
+
+	var format = path.extname(video_name).substr(1);
+
+	if(['mp4', 'ogg', 'webm'].indexOf(format) === -1) {
+		return res.json({ code: 2, msg: 'formato no soportado' });
+	}
+
+	var video = new Video({ format: format });
 	video.save(function(err) {
 		if (err) {
 			return res.json({ code: 1, msg: 'error' });
