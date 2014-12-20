@@ -63,8 +63,8 @@ videos.create = function(req, res) {
 			return res.json({ code: 1, msg: 'error' });
 		}
 
-		// Allocate the video ID in the nas server
-		// just creating a .tmp file with the ID as name <ID>.tmp
+		// reservamos (allocate) la ID del video en el servidor de videos
+		// creando un fichero temporal <ID>.allocated
 
 		nas.post('http://videos.mitubo.es/allocate', {
 			data: { id: video._id },
