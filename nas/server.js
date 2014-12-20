@@ -14,7 +14,10 @@ app.use(require('body-parser').json());
 app.use(require('connect-busboy')());
 
 app.use(function(req, res, next) {
-	res.header('Access-Control-Allow-Origin', 'http://*.mitubo.es');
+	res.header('Access-Control-Allow-Origin', 'http://server.mitubo.es');
+	res.header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+	res.header('Access-Control-Allow-Headers: X-PINGOTHER');
+	res.header('Access-Control-Max-Age: 1728000');
 });
 
 // Middleware
