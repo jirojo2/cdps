@@ -15,7 +15,8 @@ angular.module('cdps.videos.upload', ['ngRoute'])
 	$scope.phase = 0;
     
 	function validateVideo (f) {
-		return f.type == "application/pdf";
+		//return f.type == "application/pdf";
+        return true;
 	}
 
     $scope.fileNameChanged = function() {
