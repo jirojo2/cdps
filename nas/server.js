@@ -68,7 +68,7 @@ function allocateVideo(req, res) {
 		}
 	], function(err) {
 		if (err) {
-			res.json(500, { error: true, msg: err });
+			res.json({ error: true, msg: err });
 		}
 		else {
 			res.json({ error: false });
@@ -85,7 +85,7 @@ function validateAllocatedVideo(req, res, next) {
 			next();
 		}
 		else {
-			res.json(404, { error: true, videoid: videoid })
+			res.json({ error: true, videoid: videoid })
 		}
 	});
 }
@@ -117,7 +117,16 @@ function uploadVideo(req, res) {
 function downloadVideo(req, res) {
 	var videoid = (req.params.id || '').toString();
 
-	res.sendFile(path.join(NAS_PATH, videoid));
+	var videofile = path.join(NAS_PATH, videoid);
+
+	fs.exists(videofile, function(exists) {
+		if (exists) {
+			res.sendFile(path.join(NAS_PATH, videoid));
+		}
+		else {
+			res.json({ error: true, videoid: videoid })
+		}
+	});
 }
 
 // Router
