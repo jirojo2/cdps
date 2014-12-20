@@ -21,10 +21,7 @@ function validateLocalServer(req, res, next) {
 }
 
 function allocateVideo(req, res) {
-	var videoid = req.body.id;
-
-	console.log(req.body)
-	console.log(req.body.id)
+	var videoid = (req.body.id || '').toString();
 
 	var videofile = path.join(NAS_PATH, videoid);
 	var videofile_allocated = videofile + '.allocated';
@@ -80,7 +77,7 @@ function allocateVideo(req, res) {
 }
 
 function validateAllocatedVideo(req, res, next) {
-	var videoid = req.params.id;
+	var videoid = (req.params.id || '').toString();
 
 	var videofile = path.join(NAS_PATH, videoid + '.allocated');
 	fs.exists(videofile, function(exists) {
@@ -103,14 +100,14 @@ function uploadVideo(req, res) {
 	var fstream;
     req.pipe(req.busboy);
     req.busboy.on('file', function (fieldname, file, filename) {
-        console.log("Uploading: " + filename);
+        console.log("Uploading video " + videoid);
 
         //Path where video will be uploaded
         fstream = fs.createWriteStream(videofile);
         file.pipe(fstream);
         fstream.on('close', function () {
         	fs.unlink(videofile_allocated, function(err) {
-	            console.log("Upload Finished of " + filename);
+	            console.log("Upload Finished of video " + videoid);
 	            res.json({ error: false });
 	        });
         });
@@ -118,7 +115,7 @@ function uploadVideo(req, res) {
 }
 
 function downloadVideo(req, res) {
-	var videoid = req.params.id;
+	var videoid = (req.params.id || '').toString();
 
 	res.sendFile(path.join(NAS_PATH, videoid));
 }
