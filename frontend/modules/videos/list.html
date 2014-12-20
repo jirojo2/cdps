@@ -6,4 +6,12 @@
 		No hay vídeos disponibles para mostrar en estos momentos
 	</p>
 
+	<div class="row">
+		<div class="col-md-4" ng-repeat="video in list">
+			{{ video.id }}
+			<br>
+			{{ video.date }}
+		</div>
+	</div>
+
 </div>
