@@ -30,7 +30,7 @@ server {
 	index index.html index.htm;
 
 	# Make site accessible from http://localhost/
-	server_name video.mitubo.es;
+	server_name videos.mitubo.es;
 
 	#location / {
 	#	# First attempt to serve request as file, then

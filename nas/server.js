@@ -23,8 +23,11 @@ function validateLocalServer(req, res, next) {
 function allocateVideo(req, res) {
 	var videoid = req.body.id;
 
+	console.log(req.body)
+	console.log(req.body.id)
+
 	var videofile = path.join(NAS_PATH, videoid);
-	var videofile_allocated =  videofile + '.allocated';
+	var videofile_allocated = videofile + '.allocated';
 
 	async.series([
 		function(cb) {
