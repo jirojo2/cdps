@@ -2,12 +2,12 @@
 
 	<h1 class="page-header">Vídeos</h1>
 
-	<p ng-show="!list.length">
+	<p ng-show="!videos.length">
 		No hay vídeos disponibles para mostrar en estos momentos
 	</p>
 
 	<div class="row">
-		<div class="col-md-4" ng-repeat="video in list">
+		<div class="col-md-4" ng-repeat="video in videos">
 			{{ video.id }}
 			<br>
 			{{ video.date }}
