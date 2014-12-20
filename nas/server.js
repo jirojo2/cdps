@@ -131,9 +131,9 @@ function downloadVideo(req, res) {
 
 // Router
 
-app.post('/video/allocate', validateLocalServer, allocateVideo);
-app.post('/video/:id', validateAllocatedVideo, uploadVideo);
-app.get ('/video/:id', downloadVideo);
+app.post('/allocate', validateLocalServer, allocateVideo);
+app.post('/:id', validateAllocatedVideo, uploadVideo);
+app.get ('/:id', downloadVideo);
 
 // Initialize
 
