@@ -31,8 +31,19 @@ angular.module('cdps.videos', [
                 cb(err, null);
             });
         },
-        upload: function(file, cb) {
-            // TODO
+        upload: function(file, id, cb) {
+            var fd = new FormData();
+            fd.append('file', file);
+            $http.post('http://videos.mitubo.es/'+id, fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            })
+            .success(function(){
+                cb(null)
+            })
+            .error(function(err){
+                cb(err);
+            });
         },
         isLoading: function() {
             return loading;

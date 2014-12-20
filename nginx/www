@@ -28,7 +28,7 @@ server {
 	index index.html index.htm;
 
 	# Make site accessible from http://localhost/
-	server_name localhost server.mitubo.es;
+	server_name localhost server.mitubo.es www.mitubo.es mitubo.es;
 
 	#location / {
 	#	# First attempt to serve request as file, then

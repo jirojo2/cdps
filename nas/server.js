@@ -15,13 +15,18 @@ app.use(require('connect-busboy')());
 
 // Middleware
 
+function validateVideoID(id) {
+	// TODO validar el formato del ID
+	return path.basename(id || '').toString();
+}
+
 function validateLocalServer(req, res, next) {
 	// TODO whitelist ip?
 	next();
 }
 
 function allocateVideo(req, res) {
-	var videoid = (req.body.id || '').toString();
+	var videoid = validateVideoID(req.body.id);
 
 	var videofile = path.join(NAS_PATH, videoid);
 	var videofile_allocated = videofile + '.allocated';
@@ -77,7 +82,7 @@ function allocateVideo(req, res) {
 }
 
 function validateAllocatedVideo(req, res, next) {
-	var videoid = (req.params.id || '').toString();
+	var videoid = validateVideoID(req.params.id);
 
 	var videofile = path.join(NAS_PATH, videoid + '.allocated');
 	fs.exists(videofile, function(exists) {
@@ -92,7 +97,7 @@ function validateAllocatedVideo(req, res, next) {
 
 // http://stackoverflow.com/questions/23691194/node-express-file-upload
 function uploadVideo(req, res) {
-	var videoid = req.params.id;
+	var videoid = validateVideoID(req.params.id);
 
 	var videofile = path.join(NAS_PATH, videoid);
 	var videofile_allocated =  videofile + '.allocated';
@@ -115,7 +120,7 @@ function uploadVideo(req, res) {
 }
 
 function downloadVideo(req, res) {
-	var videoid = (req.params.id || '').toString();
+	var videoid = validateVideoID(req.params.id);
 
 	var videofile = path.join(NAS_PATH, videoid);
 

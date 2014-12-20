@@ -36,7 +36,13 @@ angular.module('cdps.videos.upload', ['ngRoute'])
     			$scope.video.allocating = false;
     			$scope.video.loading = true;
 
-    			Videos.upload(file);
+    			Videos.upload(file, id, function(err) {
+                    $scope.phase = 3;
+                    $scope.video.loading = false;
+                    $scope.video.uploaded = true;
+
+                    console.log(err||'video subido correctamente ' + id);
+                });
     		});
     	} 
     	else {

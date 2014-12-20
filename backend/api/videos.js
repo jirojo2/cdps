@@ -1,8 +1,12 @@
 var winston = require('winston');
 var mongoose = require('mongoose');
 
+var RestClient = require('node-rest-client').Client;
+
 var User = mongoose.model('User');
 var Video = mongoose.model('Video');
+
+var nas = new RestClient();
 
 var videos = {};
 module.exports = videos;
@@ -48,10 +52,17 @@ videos.create = function(req, res) {
 			return res.json({ code: 1, msg: 'error' });
 		}
 
-		// TODO: Allocate the video ID in the nas server
+		// Allocate the video ID in the nas server
 		// just creating a .tmp file with the ID as name <ID>.tmp
 
-		res.json({ code: 0, id: video._id });
+		nas.post('http://videos.mitubo.es/allocate', { id: video._id }, function(err, data) {
+			if (data.error) {
+				res.json({ code: 1, msg: data.msg });
+			}
+			else {
+				res.json({ code: 0, id: video._id });
+			}
+		});		
 	});
 }
 

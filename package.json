@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "description": "servicio de video de alta fiabilidad",
   "main": "server.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/jirojo2/cdps.git"
@@ -25,6 +24,7 @@
     "passport-local": "^1.0.0",
     "winston": "^0.8.3",
     "connect-busboy": "0.0.2",
-    "async": "~0.9.0"
+    "async": "~0.9.0",
+    "node-rest-client": "~1.4.3"
   }
 }
