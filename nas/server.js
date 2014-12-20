@@ -25,7 +25,7 @@ app.use(function(req, res, next) {
 
 function validateVideoID(id) {
 	// TODO validar el formato del ID
-	return path.basename(id || '').toString();
+	return (id || '').toString();
 }
 
 function validateLocalServer(req, res, next) {
