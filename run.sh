@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ~/dev/
+
 if [ "$1" == "www" ]; then
 	npm install
 	bower install
