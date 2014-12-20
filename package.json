@@ -25,6 +25,8 @@
     "mongoose": "^3.8.20",
     "passport": "^0.2.1",
     "passport-local": "^1.0.0",
-    "winston": "^0.8.3"
+    "winston": "^0.8.3",
+    "connect-busboy": "0.0.2",
+    "async": "~0.9.0"
   }
 }
