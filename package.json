@@ -4,8 +4,6 @@
   "description": "servicio de video de alta fiabilidad",
   "main": "server.js",
   "scripts": {
-    "start-www": "npm install && bower install && cd backend && node server.js",
-    "start-nas": "npm install && cd nas && node server.js"
   },
   "repository": {
     "type": "git",
