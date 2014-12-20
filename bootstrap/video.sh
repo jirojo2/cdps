@@ -8,5 +8,5 @@ mkdir -p /mnt/nas
 mount -t glusterfs 10.1.3.21:/nas -o backup-volfile-servers=10.1.3.22:10.1.3.23 /mnt/nas
 chmod 777 /mnt/nas
 
-# launch nodejs (aún no funciona)
-forever start -c "npm run-script start-nas" ~/dev/
+# launch nodejs 
+forever start -c "bash" ~/dev/run.sh nas
