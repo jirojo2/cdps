@@ -13,6 +13,10 @@ var NAS_PATH = '/mnt/nas';
 app.use(require('body-parser').json());
 app.use(require('connect-busboy')());
 
+app.use(function(req, res, next) {
+	res.header('Access-Control-Allow-Origin', 'http://*.mitubo.es');
+});
+
 // Middleware
 
 function validateVideoID(id) {
