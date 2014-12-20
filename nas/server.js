@@ -106,7 +106,7 @@ function uploadVideo(req, res) {
         console.log("Uploading: " + filename);
 
         //Path where video will be uploaded
-        fstream = fs.createWriteStream(path.join(NAS_PATH, filename));
+        fstream = fs.createWriteStream(videofile);
         file.pipe(fstream);
         fstream.on('close', function () {
         	fs.unlink(videofile_allocated, function(err) {
