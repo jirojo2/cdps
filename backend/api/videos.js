@@ -71,11 +71,6 @@ videos.create = function(req, res) {
 	});
 }
 
-videos.download = function(req, res) {
-	// encontrar y descargar el vídeo
-	// esto debe gestionarse directamente desde videos
-}
-
 videos.delete = function(req, res) {
 	// gestionar el borrado del vídeo
 }

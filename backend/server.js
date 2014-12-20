@@ -73,7 +73,6 @@ app.post('/api/video', api.auth.require.user, api.videos.create);
 
 app.delete('/api/video/:id', api.videos.require.author, api.videos.delete);
 app.put('/api/video/:id', api.videos.require.author, api.videos.update);
-app.get('/api/video/:id', api.videos.download);
 
 // Initialize
 
