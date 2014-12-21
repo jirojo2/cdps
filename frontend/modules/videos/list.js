@@ -9,7 +9,7 @@ angular.module('cdps.videos.list', ['ngRoute'])
     });
 }])
 
-.controller('VideosCtrl', ['$scope', 'Videos', function($scope, Videos) {
+.controller('VideosCtrl', ['$scope', '$sce', 'Videos', function($scope, $sce, Videos) {
     
     $scope.videos = [];
 
@@ -18,5 +18,9 @@ angular.module('cdps.videos.list', ['ngRoute'])
     });
 
     $scope.$parent.showFilter = true;
+
+    $scope.videoURL = function(video) {
+    	return $sce.trustAsUrl('http://videos.mitubo.es/' + video._id);
+    }
 
 }]);
