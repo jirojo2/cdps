@@ -12,6 +12,11 @@ angular.module('cdps', [
     $routeProvider.otherwise({redirectTo: '/'});
 }])
 
+.config(['$sceProvider', function($sceProvider) {
+    // Completely disable SCE. :D
+    $sceProvider.enabled(false);
+}])
+
 .run(['$rootScope', '$location', 'Auth', function ($rootScope, $location, Auth) {
     $rootScope.$on('$routeChangeStart', function (event) {
 

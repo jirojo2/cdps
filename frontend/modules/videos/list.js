@@ -19,8 +19,4 @@ angular.module('cdps.videos.list', ['ngRoute'])
 
     $scope.$parent.showFilter = true;
 
-    $scope.videoURL = function(video) {
-    	return $sce.trustAsUrl('http://videos.mitubo.es/' + video._id);
-    }
-
 }]);
