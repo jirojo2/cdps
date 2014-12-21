@@ -40,7 +40,7 @@ videos.list = function(req, res) {
 	});
 }
 
-video.info = function(req, res) {
+videos.info = function(req, res) {
 	var videoid = req.params.id || '';
 
 	Video.findById(videoid).exec(function(err, video) {
