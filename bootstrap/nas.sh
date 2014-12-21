@@ -7,3 +7,4 @@ gluster peer probe 10.1.3.22
 gluster peer probe 10.1.3.23
 
 gluster volume create nas replica 3 transport tcp 10.1.3.2{1,2,3}:/nas/brick
+gluster volume start nas

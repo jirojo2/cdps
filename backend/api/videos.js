@@ -1,5 +1,6 @@
 var winston = require('winston');
 var mongoose = require('mongoose');
+var path = require('path');
 
 var RestClient = require('node-rest-client').Client;
 
