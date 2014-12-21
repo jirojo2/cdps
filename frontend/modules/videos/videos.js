@@ -2,6 +2,7 @@
 
 angular.module('cdps.videos', [
     'cdps.videos.list',
+    'cdps.videos.watch',
     'cdps.videos.upload'
 ])
 
@@ -10,6 +11,18 @@ angular.module('cdps.videos', [
     var loading = false;
 
     return {
+        get: function(id, cb) {            
+            loading = true;
+            $http.get('/api/video/'+id)
+            .success(function(data) {
+                if (data.code) {
+                    console.log("ERROR: " + data.msg);
+                    return cb(data, []);
+                }
+                loading = false;
+                cb(null, data.list || []);
+            });
+        },
         list: function(cb) {
             loading = true;
             $http.get('/api/videos')

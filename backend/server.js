@@ -70,9 +70,9 @@ app.post('/api/auth/signup', api.auth.signup);
 
 app.get ('/api/videos', api.videos.list);
 app.post('/api/video', api.auth.require.user, api.videos.create);
-
+app.get ('/api/video/:id', api.videos.info);
+app.put ('/api/video/:id', api.videos.require.author, api.videos.update);
 app.delete('/api/video/:id', api.videos.require.author, api.videos.delete);
-app.put('/api/video/:id', api.videos.require.author, api.videos.update);
 
 // Initialize
 

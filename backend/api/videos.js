@@ -40,6 +40,14 @@ videos.list = function(req, res) {
 	});
 }
 
+video.info = function(req, res) {
+	var videoid = req.params.id || '';
+
+	Video.findById(videoid).exec(function(err, video) {
+		res.json({ code: 0, video: video });
+	});
+}
+
 videos.create = function(req, res) {
 	// gestionar la subida de un nuevo video
 	// creamos entrada en la base de datos y enviamos una petición a la api de videos
