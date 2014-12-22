@@ -13,10 +13,8 @@ angular.module('cdps.videos.watch', ['ngRoute'])
     
     $scope.video = {};
 
-    Videos.list(function(err, list) {
-        $scope.videos = list;
+    Videos.get($routeParams.id, function(err, video) {
+        $scope.video = video;
     });
-
-    $scope.$parent.showFilter = true;
 
 }]);
