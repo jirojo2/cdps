@@ -23,6 +23,7 @@ li > a[ng-click] {
 
 .video-list > div {
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .video-list > div:hover {
