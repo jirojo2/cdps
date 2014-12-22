@@ -17,10 +17,10 @@ angular.module('cdps.videos', [
             .success(function(data) {
                 if (data.code) {
                     console.log("ERROR: " + data.msg);
-                    return cb(data, []);
+                    return cb(data);
                 }
                 loading = false;
-                cb(null, data.list || []);
+                cb(null, data.video);
             });
         },
         list: function(cb) {
