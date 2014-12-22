@@ -1,17 +1,23 @@
 <div class="container">
 
-	<h1 class="page-header">Vídeo {{ video._id }}</h1>
+	<div ng-show="video">
 
-	<div class="row">
-		<div class="col-md-8">
-			<video ng-src="{{ 'http://videos.mitubo.es/' + video._id }}" width="100%" height="600" controls>
-				Your browser does not support the video tag.
-			</video>
+		<h1 class="page-header">Vídeo {{ video._id }}</h1>
 
-			{{ video._id }}
-			<br>
-			{{ video.date }}
+		<div class="row">
+			<div class="col-md-8">
+				<video ng-src="{{ 'http://videos.mitubo.es/' + video._id }}" width="100%" height="600" controls>
+					Your browser does not support the video tag.
+				</video>
+
+				{{ video._id }}
+				<br>
+				{{ video.date }}
+			</div>
 		</div>
+
 	</div>
+
+	<center ng-show="!video"><i class="fa fa-spinner fa-spin fa-4x"></i></center>
 
 </div>

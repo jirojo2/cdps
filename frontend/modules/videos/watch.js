@@ -11,7 +11,7 @@ angular.module('cdps.videos.watch', ['ngRoute'])
 
 .controller('VideoCtrl', ['$scope', '$routeParams', 'Videos', function($scope, $routeParams, Videos) {
     
-    $scope.video = {};
+    $scope.video = null;
 
     Videos.get($routeParams.id, function(err, video) {
         $scope.video = video;
