@@ -9,7 +9,7 @@ angular.module('cdps.videos.list', ['ngRoute'])
     });
 }])
 
-.controller('VideosCtrl', ['$scope', '$sce', 'Videos', function($scope, $sce, Videos) {
+.controller('VideosCtrl', ['$scope', '$location', 'Videos', function($scope, $location, Videos) {
     
     $scope.videos = [];
 
@@ -19,4 +19,7 @@ angular.module('cdps.videos.list', ['ngRoute'])
 
     $scope.$parent.showFilter = true;
 
+    $scope.watch = function(id) {
+    	$location.path('/video/' + id);
+    }
 }]);

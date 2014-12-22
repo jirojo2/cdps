@@ -6,8 +6,8 @@
 		No hay vídeos disponibles para mostrar en estos momentos
 	</p>
 
-	<div class="row">
-		<div class="col-md-4" ng-repeat="video in videos">
+	<div class="row video-list">
+		<div class="col-md-4 video-list-item" ng-repeat="video in videos" ng-click="watch(video._id)">
 			<video ng-src="{{ 'http://videos.mitubo.es/' + video._id }}" width="100%" height="200">
 				Your browser does not support the video tag.
 			</video>

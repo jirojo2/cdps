@@ -20,3 +20,11 @@ body {
 li > a[ng-click] {
     cursor: pointer;
 }
+
+.video-list > div {
+    margin-bottom: 20px;
+}
+
+.video-list > div:hover {
+    background-color: #eee;
+}
