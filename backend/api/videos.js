@@ -149,7 +149,7 @@ videos.unfavourite = function(req, res) {
 videos.favourites = function(req, res) {
 	// Devuelve el listado de videos favoritos del usuario
 
-	User.findById(req.user._id).popupate('favourites').exec(function(err, user) {
+	User.findById(req.user._id).populate('favourites').exec(function(err, user) {
 		res.json({ code: 0, list: user.favourites });
 	});
 }
