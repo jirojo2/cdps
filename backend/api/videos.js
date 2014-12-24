@@ -138,6 +138,7 @@ videos.unfavourite = function(req, res) {
 		video.save();
 
 		if (err) {
+			console.log('error ', err)
 			res.json({ code: 1, msg: 'error' });
 		}
 		else {
