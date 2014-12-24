@@ -40,10 +40,13 @@ userSchema.methods.fav = function(video) {
 }
 
 userSchema.methods.unfav = function(video) {
-	var idx = this.favourites.indexOf(video);
-	console.log('idx', idx)
-	if (idx != -1)
-		this.favourites.splice(idx, 1);
+	for (var i = this.favourites.length - 1; i >= 0; i--) {
+		console.log(this.favourites[i])
+		if (this.favourites[i]._id == video._id) {
+			delete this.favourites[i];
+			break;
+		}
+	}
 }
 
 var User = mongoose.model('User', userSchema);
