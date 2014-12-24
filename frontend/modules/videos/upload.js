@@ -11,6 +11,8 @@ angular.module('cdps.videos.upload', ['ngRoute'])
 
 	$scope.video = {};
 	$scope.phase = 0;
+
+    var file = null;
     
 	function validateVideo (f) {
 		//return f.type == "application/pdf";
@@ -19,7 +21,7 @@ angular.module('cdps.videos.upload', ['ngRoute'])
 
     $scope.fileNameChanged = function() {
 
-    	var file = document.getElementById('file').files[0];
+    	file = document.getElementById('file').files[0];
 
     	if (validateVideo(file)) {
     		$scope.video = { allocating: true, name: file.name };
