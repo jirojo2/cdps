@@ -107,7 +107,7 @@ videos.update = function(req, res) {
 videos.favourite = function(req, res) {
 	// Añadir al listado de favoritos del usuario
 
-	var videid = req.body.id || 0;
+	var videoid = req.body.id || 0;
 
 	Video.findById(videoid).exec(function(err, video) {
 		req.user.fav(video);
@@ -128,7 +128,7 @@ videos.favourite = function(req, res) {
 videos.unfavourite = function(req, res) {
 	// Quitar del listado de favoritos del usuario
 
-	var videid = req.body.id || 0;
+	var videoid = req.body.id || 0;
 
 	Video.findById(videoid).exec(function(err, video) {
 		req.user.unfav(video);
