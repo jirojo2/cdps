@@ -106,4 +106,50 @@ videos.update = function(req, res) {
 
 videos.favourite = function(req, res) {
 	// Añadir al listado de favoritos del usuario
+
+	var videid = req.body.id || 0;
+
+	Video.findById(videoid).exec(function(err, video) {
+		req.user.fav(video);
+
+		req.user.save();
+		video.meta.likes += 1;
+		video.save();
+
+		if (err) {
+			res.json({ code: 1, msg: 'error' });
+		}
+		else {
+			res.json({ code: 0 });
+		}
+	});
+}
+
+videos.unfavourite = function(req, res) {
+	// Quitar del listado de favoritos del usuario
+
+	var videid = req.body.id || 0;
+
+	Video.findById(videoid).exec(function(err, video) {
+		req.user.unfav(video);
+
+		req.user.save();
+		video.meta.likes -= 1;
+		video.save();
+
+		if (err) {
+			res.json({ code: 1, msg: 'error' });
+		}
+		else {
+			res.json({ code: 0 });
+		}
+	});
+}
+
+videos.favourites = function(req, res) {
+	// Devuelve el listado de videos favoritos del usuario
+
+	User.findById(req.user._id).popupate('favourites').exec(function(err, user) {
+		res.json({ code: 0, list: user.favourites });
+	});
 }

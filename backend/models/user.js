@@ -39,5 +39,11 @@ userSchema.methods.fav = function(video) {
 	this.favs.push(video._id);
 }
 
+userSchema.methods.fav = function(video) {
+	var idx = this.favs.indexOf(video._id);
+	if (idx != -1)
+		this.favs.splice(idx, 1);
+}
+
 var User = mongoose.model('User', userSchema);
 module.exports = User;

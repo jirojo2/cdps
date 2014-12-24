@@ -6,7 +6,7 @@ var videoSchema = new mongoose.Schema({
 	format: String, // mp4, ogg, webm
 	date: { type: Date, default: Date.now },
 	meta: {
-	    likes:  Number,
+	    likes: Number,
 	    dislikes: Number
 	},
 	author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
