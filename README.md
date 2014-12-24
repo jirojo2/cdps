@@ -32,3 +32,7 @@ cd dev
 4. Para los servidores web, clono / actualizo el repositorio git a partir del host (origin) y actualizo el repositorio npm (npm_modules)  
 5. A partir de los script bash preparados en (3), lanzo todos los servicios necesarios, incluyendo la preparación del glusterfs en los nas  
 6. En los servidores web lanzo las instancias de node necesarias  
+
+# ToDo  
+* Montar /mnt/nas con las opciones de backup (nas2, nas3, ...) actualmente falla, ignoro por qué  
+* Replicar mongodb en los servidores www (http://docs.mongodb.org/manual/tutorial/deploy-replica-set/)  
