@@ -22,7 +22,7 @@ angular.module('cdps.videos.upload', ['ngRoute'])
     	var file = document.getElementById('file').files[0];
 
     	if (validateVideo(file)) {
-    		$scope.video = { allocating: true };
+    		$scope.video = { allocating: true, name: file.name };
     		$scope.error = null;
 			$scope.phase = 1;
 
@@ -36,8 +36,6 @@ angular.module('cdps.videos.upload', ['ngRoute'])
 
     $scope.videoUpload = function() {
         $scope.phase = 2;
-
-        $scope.video.name = file.name;
 
         Videos.allocateVideo($scope.video, function(err, id) {
             if (err) {
