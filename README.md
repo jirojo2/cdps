@@ -35,6 +35,11 @@ cd dev
 
 # ToDo  
 * Replicar mongodb en los servidores www (http://docs.mongodb.org/manual/tutorial/deploy-replica-set/)  
+	1. s4$ mongo
+	2. mongo> rs.initiate()
+	3. mongo> rs.add('s5')
+	4. s5$ mongo
+	5. mongo> rs.slaveOk()
 
 # Referencias  
 * http://glusterhacker.blogspot.com.es/2013/01/volume-files-and-sneak-peak-at.html  
