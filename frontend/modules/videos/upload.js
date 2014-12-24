@@ -20,7 +20,6 @@ angular.module('cdps.videos.upload', ['ngRoute'])
 	}
 
     $scope.fileNameChanged = function() {
-        console.log("...")
 
     	var file = document.getElementById('file').files[0];
 
