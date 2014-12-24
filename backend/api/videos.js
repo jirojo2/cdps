@@ -129,7 +129,6 @@ videos.unfavourite = function(req, res) {
 	// Quitar del listado de favoritos del usuario
 
 	var videoid = req.params.id || 0;
-	console.log("quitar favorito: ", videoid)
 
 	Video.findById(videoid).exec(function(err, video) {
 		req.user.unfav(video);
@@ -139,7 +138,6 @@ videos.unfavourite = function(req, res) {
 		video.save();
 
 		if (err) {
-			console.log('error ', err)
 			res.json({ code: 1, msg: 'error' });
 		}
 		else {
