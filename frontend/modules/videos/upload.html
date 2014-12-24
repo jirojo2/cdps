@@ -15,15 +15,34 @@
 
 	<div ng-show="phase">
 
-		<div ng-show="phase >= 1">
-			<h4>2. Obtener un ID del servidor central</h4>
+		<form ng-submit="upload()" ng-show="phase >= 1">
+			<fieldset>
+				<legend>2. Info del vídeo</legend>
+
+				<label>
+					Título: 
+					<input class="form-control" type="text" ng-model="video.title">
+				</label>
+
+				<label>
+					Descripción: 
+					<input class="form-control" type="text" ng-model="video.desc">
+				</label>
+			</fieldset>
+		</form>
+
+		<div ng-show="phase >= 2">
+			<h4>3. Obtener un ID del servidor central</h4>
 			<i class="fa fa-spinner fa-spin fa-2x" ng-show="video.allocating"></i>
 			<p>ID: {{ video.id }}</p>
 		</div>
 		
-		<div ng-show="phase >= 2">
-			<h4>3. Subir el archivo a los servidores de video</h4>
-			<p>XX %</p>
+		<div ng-show="phase >= 3">
+			<h4>4. Subir el archivo a los servidores de video</h4>
+			<p ng-show="video.uploaded">
+				<a class="btn btn-success" href="#/video/{{ video.id }}">Ver el vídeo</a>
+			</p>
+			<i class="fa fa-spin fa-spinner fa-2x" ng-show="!video.uploaded"></i>
 		</div>
 	</div>
 
