@@ -17,15 +17,14 @@
 		<fieldset>
 			<legend>2. Info del vídeo</legend>
 
-			<label>
-				Título: 
+			<div class="form-group">
+				<label>Título</label>
 				<input class="form-control" type="text" ng-model="video.title">
-			</label>
-
-			<label>
-				Descripción: 
-				<input class="form-control" type="text" ng-model="video.desc">
-			</label>
+			</div>
+			<div class="form-group">
+				<label>Descripción</label>
+				<textarea class="form-control" rows="4" ng-model="video.desc"></textarea>
+			</div>
 
 			<button ng-click="videoUpload()" class="btn btn-default btn-block">Enviar</button>
 		</fieldset>
