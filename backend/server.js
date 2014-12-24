@@ -2,6 +2,9 @@ var winston = require('winston');
 var express = require('express');
 var path = require('path');
 
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+
 var mongoose = require('mongoose');
 var models = require('./models');
 var api = require('./api');
@@ -39,8 +42,12 @@ passport.deserializeUser(api.auth.deserialize);
 
 app.use('/frontend', express.static(path.join(__dirname, '..', 'frontend')));
 app.use(require('body-parser').json());
-app.use(require('express-session')({ 
+app.use(session({ 
 	secret: 'tbiurjyrb6r7b6r76r7i6r76',
+	store: new MongoStore({
+		url: 'mongodb://localhost/cdps',
+		collection: 'express-sessions'
+    }),
 	resave: false,
 	saveUninitialized: true
 }));
