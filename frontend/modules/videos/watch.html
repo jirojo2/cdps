@@ -11,8 +11,9 @@
 	<div class="container">
 		<h2 class="page-header">
 			Información del Vídeo
-			<span class="pull-right">
-				<i class="fa fa-heart-o pointer" tooltip="Añadir a favoritos" ng-click="fav()"></i>
+			<span class="pull-right" ng-show="loggedin">
+				<i class="fa fa-heart-o pointer" tooltip="Añadir a favoritos" ng-click="fav()" ng-show="!isFav()"></i>
+				<i class="fa fa-heart pointer" tooltip="Quitar de favoritos" ng-click="unfav()" ng-show="isFav()"></i>
 			</span>
 		</h2>
 		<p>Título: {{ video.title }}</p>

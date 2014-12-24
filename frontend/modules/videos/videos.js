@@ -61,6 +61,15 @@ angular.module('cdps.videos', [
         isLoading: function() {
             return loading;
         },
+        favourites : function(cb) {
+            $http.get('/api/favourites')
+            .success(function(data) {
+                cb(null, data.list);
+            })
+            .error(function(err) {
+                cb(err);
+            })
+        },
         fav: function(videoid, cb) {
             $http.post('/api/favourite', { id: videoid })
             .success(function(data) {
