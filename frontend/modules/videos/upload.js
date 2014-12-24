@@ -1,7 +1,3 @@
-'use strict';
-
-_scope = null;
-
 angular.module('cdps.videos.upload', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
