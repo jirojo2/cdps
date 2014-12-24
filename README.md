@@ -34,5 +34,9 @@ cd dev
 6. En los servidores web lanzo las instancias de node necesarias  
 
 # ToDo  
-* Montar /mnt/nas con las opciones de backup (nas2, nas3, ...) actualmente falla, ignoro por qué  
 * Replicar mongodb en los servidores www (http://docs.mongodb.org/manual/tutorial/deploy-replica-set/)  
+
+# Referencias  
+* http://glusterhacker.blogspot.com.es/2013/01/volume-files-and-sneak-peak-at.html  
+* http://docs.mongodb.org/manual/tutorial/deploy-replica-set/  
+* http://nginx.org/en/docs/http/load_balancing.html  
