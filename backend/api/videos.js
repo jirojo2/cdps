@@ -129,6 +129,7 @@ videos.unfavourite = function(req, res) {
 	// Quitar del listado de favoritos del usuario
 
 	var videoid = req.body.id || 0;
+	console.log("quitar favorito: ", videoid)
 
 	Video.findById(videoid).exec(function(err, video) {
 		req.user.unfav(video);
