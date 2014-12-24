@@ -26,7 +26,7 @@ angular.module('cdps.videos.upload', ['ngRoute'])
     		$scope.error = null;
 			$scope.phase = 1;
 
-            $scope.apply();    		
+            $scope.$apply();    		
     	} 
     	else {
     		$scope.error = "Archivo de vídeo incorrecto";
