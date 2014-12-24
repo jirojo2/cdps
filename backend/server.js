@@ -82,8 +82,8 @@ app.put ('/api/video/:id', api.videos.require.author, api.videos.update);
 app.delete('/api/video/:id', api.videos.require.author, api.videos.delete);
 
 app.get ('/api/favourites', api.auth.require.user, api.videos.favourites);
-app.post('/api/favourite', api.auth.require.user, api.videos.favourite);
-app.delete('/api/favourite', api.auth.require.user, api.videos.unfavourite);
+app.post('/api/favourite/:id', api.auth.require.user, api.videos.favourite);
+app.delete('/api/favourite/:id', api.auth.require.user, api.videos.unfavourite);
 
 // Initialize
 

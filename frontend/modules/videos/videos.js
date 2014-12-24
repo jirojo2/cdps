@@ -71,7 +71,7 @@ angular.module('cdps.videos', [
             })
         },
         fav: function(videoid, cb) {
-            $http.post('/api/favourite', { id: videoid })
+            $http.post('/api/favourite/'+videoid, { })
             .success(function(data) {
                 cb(data.code != 0 ? data.msg : null);
             })
@@ -80,7 +80,7 @@ angular.module('cdps.videos', [
             })
         },
         unfav: function(videoid, cb) {
-            $http.delete('/api/favourite', { id: videoid })
+            $http.delete('/api/favourite/'+videoid)
             .success(function(data) {
                 cb(data.code != 0 ? data.msg : null);
             })
