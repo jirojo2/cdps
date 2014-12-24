@@ -15,7 +15,7 @@
 
 	<div ng-show="phase">
 
-		<form ng-submit="videoUpload()" ng-show="phase >= 1">
+		<div ng-submit="videoUpload()" ng-show="phase >= 1">
 			<fieldset>
 				<legend>2. Info del vídeo</legend>
 
@@ -31,7 +31,7 @@
 
 				<button type="submit" class="btn btn-default btn-block">Enviar</button>
 			</fieldset>
-		</form>
+		</div>
 
 		<div ng-show="phase >= 2">
 			<h4>3. Obtener un ID del servidor central</h4>
