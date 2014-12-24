@@ -4,7 +4,7 @@
 
 	<h4>1. Seleccionar el archivo</h4>
 
-	<form ng-submit="upload()" ng-show="!phase">
+	<form ng-show="!phase">
 
 		<label>
 			<input type="file" id="file" onchange="angular.element(this).scope().fileNameChanged()">
@@ -28,6 +28,8 @@
 					Descripción: 
 					<input class="form-control" type="text" ng-model="video.desc">
 				</label>
+
+				<button type="submit" class="btn btn-default btn-block">Enviar</button>
 			</fieldset>
 		</form>
 
