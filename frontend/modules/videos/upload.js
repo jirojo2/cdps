@@ -11,8 +11,6 @@ angular.module('cdps.videos.upload', ['ngRoute'])
 
 	$scope.video = {};
 	$scope.phase = 0;
-
-    _scope = $scope;
     
 	function validateVideo (f) {
 		//return f.type == "application/pdf";
@@ -26,7 +24,9 @@ angular.module('cdps.videos.upload', ['ngRoute'])
     	if (validateVideo(file)) {
     		$scope.video = { allocating: true };
     		$scope.error = null;
-			$scope.phase = 1;    		
+			$scope.phase = 1;
+
+            $scope.apply();    		
     	} 
     	else {
     		$scope.error = "Archivo de vídeo incorrecto";
