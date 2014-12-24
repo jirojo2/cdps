@@ -36,13 +36,13 @@ userSchema.methods.isValidPassword = function(password) {
 }
 
 userSchema.methods.fav = function(video) {
-	this.favs.push(video._id);
+	this.favourites.push(video._id);
 }
 
 userSchema.methods.unfav = function(video) {
-	var idx = this.favs.indexOf(video._id);
+	var idx = this.favourites.indexOf(video._id);
 	if (idx != -1)
-		this.favs.splice(idx, 1);
+		this.favourites.splice(idx, 1);
 }
 
 var User = mongoose.model('User', userSchema);
