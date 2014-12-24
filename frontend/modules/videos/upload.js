@@ -34,10 +34,10 @@ angular.module('cdps.videos.upload', ['ngRoute'])
     	}
     }
 
-    $scope.uploadVideo = function() {
+    $scope.videoUpload = function() {
         $scope.phase = 2;
 
-        Videos.allocateVideo(file.name ,function(err, id) {
+        Videos.allocateVideo(file.name, $scope.video, function(err, id) {
             if (err) {
                 return $scope.error = "Error al subir el archivo de vídeo";
             }

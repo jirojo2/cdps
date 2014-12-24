@@ -35,10 +35,8 @@ angular.module('cdps.videos', [
                 cb(null, data.list || []);
             });
         },
-        allocateVideo: function(name, cb) {
-            $http.post('/api/video', {
-                name: name
-            })
+        allocateVideo: function(video_data, cb) {
+            $http.post('/api/video', video_data)
             .success(function(data) {
                 cb(null, data.id);
             }).error(function(err){
