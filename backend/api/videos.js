@@ -113,7 +113,7 @@ videos.favourite = function(req, res) {
 		req.user.fav(video);
 
 		req.user.save();
-		video.meta.likes += 1;
+		video.meta.likes = (video.meta.likes||0) + 1;
 		video.save();
 
 		if (err) {
@@ -134,7 +134,7 @@ videos.unfavourite = function(req, res) {
 		req.user.unfav(video);
 
 		req.user.save();
-		video.meta.likes -= 1;
+		video.meta.likes = (video.meta.likes||0) - 1;
 		video.save();
 
 		if (err) {
