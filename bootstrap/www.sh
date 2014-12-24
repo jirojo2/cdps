@@ -10,4 +10,4 @@ sudo /etc/init.d/mongodb start
 echo "10.1.1.1 videos.mitubo.es" | sudo tee -a /etc/hosts
 
 # launch nodejs 
-bash -s ~/dev/run.sh www
+~/dev/run.sh www
