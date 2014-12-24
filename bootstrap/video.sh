@@ -14,4 +14,4 @@ sudo mount -t glusterfs 10.1.3.21:/nas /mnt/nas
 sudo chmod 777 /mnt/nas
 
 # launch nodejs 
-forever start -c "bash" ~/dev/run.sh nas
+bash -s ~/dev/run.sh nas
