@@ -20,22 +20,25 @@ angular.module('cdps.videos.watch', ['ngRoute'])
         $scope.video = video;
     });
 
-    if (Auth.isLoggedIn()) {
-    	$scope.loggedin = true;
-    	Videos.favourites(function(err, list) {
-    		$scope.favourites = list || [];
-    	});
-    } 
+    $scope.getFavourites = function() {
+	    if (Auth.isLoggedIn()) {
+	    	$scope.loggedin = true;
+	    	Videos.favourites(function(err, list) {
+	    		$scope.favourites = list || [];
+	    	});
+	    } 
+	}
+	$scope.getFavourites();
 
     $scope.fav = function() {
     	Videos.fav($scope.video._id, function(err) {
-
+    		$scope.getFavourites();
     	});
     }
 
     $scope.unfav = function() {
     	Videos.unfav($scope.video._id, function(err) {
-    		
+    		$scope.getFavourites();
     	});
     }
 

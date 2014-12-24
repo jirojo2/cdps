@@ -41,6 +41,7 @@ userSchema.methods.fav = function(video) {
 
 userSchema.methods.unfav = function(video) {
 	var idx = this.favourites.indexOf(video);
+	console.log('idx', idx)
 	if (idx != -1)
 		this.favourites.splice(idx, 1);
 }
