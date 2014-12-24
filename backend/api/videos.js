@@ -60,13 +60,18 @@ videos.create = function(req, res) {
 	// parseamos el nombre del fichero para obtener el formato
 	// video/<formato>, aceptando: mp4, ogg, webm
 
-	var format = path.extname(video_name).substr(1);
+	var video_data = {};
 
-	if(['mp4', 'ogg', 'webm'].indexOf(format) === -1) {
+	video_data.format = path.extname(video_name).substr(1);
+
+	if(['mp4', 'ogg', 'webm'].indexOf(video_data.format) === -1) {
 		return res.json({ code: 2, msg: 'formato no soportado' });
 	}
 
-	var video = new Video({ format: format });
+	video_data.title = (req.body.title || '').toString();
+	video_data.desc = (req.body.desc || '').toString();
+
+	var video = new Video(video_data);
 	video.save(function(err) {
 		if (err) {
 			return res.json({ code: 1, msg: 'error' });
