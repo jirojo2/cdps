@@ -60,6 +60,24 @@ angular.module('cdps.videos', [
         },
         isLoading: function() {
             return loading;
+        },
+        fav: function(videoid, cb) {
+            $http.post('/api/favourite', { id: videoid })
+            .success(function(data) {
+                cb(data.code != 0 ? data.msg : null);
+            })
+            .error(function(err) {
+                cb(err);
+            })
+        },
+        unfav: function(videoid, cb) {
+            $http.delete('/api/favourite', { id: videoid })
+            .success(function(data) {
+                cb(data.code != 0 ? data.msg : null);
+            })
+            .error(function(err) {
+                cb(err);
+            })
         }
     }
 }])

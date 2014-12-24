@@ -17,4 +17,16 @@ angular.module('cdps.videos.watch', ['ngRoute'])
         $scope.video = video;
     });
 
+    $scope.fav = function() {
+    	Videos.fav($scope.video._id, function(err) {
+
+    	});
+    }
+
+    $scope.unfav = function() {
+    	Videos.unfav($scope.video._id, function(err) {
+    		
+    	});
+    }
+
 }]);

@@ -29,3 +29,7 @@ li > a[ng-click] {
 .video-list > div:hover {
     background-color: #eee;
 }
+
+.pointer {
+    cursor: pointer;
+}
