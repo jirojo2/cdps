@@ -1,4 +1,11 @@
-cdps
-====
+CDPS Vídeos: Práctica 7  
+========================  
 
-p7 cdps
+# Preparar escenario
+
+```bash
+cd ~/p7
+sudo vnx -f p7.xml -v --create
+cd dev
+./bootstrap.sh
+```
