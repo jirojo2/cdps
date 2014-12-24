@@ -43,7 +43,7 @@ userSchema.methods.unfav = function(video) {
 	console.log(video._id)
 	for (var i = this.favourites.length - 1; i >= 0; i--) {
 		console.log(this.favourites[i]._id)
-		if (this.favourites[i]._id == video._id) {
+		if (this.favourites[i]._id.toString() == video._id) {
 			console.log("... delete ...")
 			delete this.favourites[i];
 			break;
