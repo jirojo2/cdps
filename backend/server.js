@@ -17,93 +17,92 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var app = express();
 
-// Modules
+mongoose.connect('mongodb://localhost/cdps');
+var db = mongoose.connection;
 
-// Setting up passport.js auth
-passport.use(new LocalStrategy( {
-		usernameField: 'email',
-		passwordFiled: 'password'
-	},
-	function(email, password, done) {
-		User.findOne({ email: email }, function(err, user) {
-			if (err) { return done(err); }
-			if (!user) {
-				return done(null, false, { message: 'Incorrect email.' });
-			}
-			if (!user.isValidPassword(password)) {
-				return done(null, false, { message: 'Incorrect password.' });
-			}
-			return done(null, user);
-		});
-	}
-));
+db.on('error', winston.error.bind(winston, 'mongodb connection error'));
+db.on('open', function () {
+	// Modules
 
-passport.serializeUser(api.auth.serialize);
-passport.deserializeUser(api.auth.deserialize);
+	// Setting up passport.js auth
+	passport.use(new LocalStrategy( {
+			usernameField: 'email',
+			passwordFiled: 'password'
+		},
+		function(email, password, done) {
+			User.findOne({ email: email }, function(err, user) {
+				if (err) { return done(err); }
+				if (!user) {
+					return done(null, false, { message: 'Incorrect email.' });
+				}
+				if (!user.isValidPassword(password)) {
+					return done(null, false, { message: 'Incorrect password.' });
+				}
+				return done(null, user);
+			});
+		}
+	));
 
-app.use('/frontend', express.static(path.join(__dirname, '..', 'frontend')));
-app.use(require('body-parser').json());
-app.use(session({ 
-	secret: 'tbiurjyrb6r7b6r76r7i6r76',
-	store: new MongoStore({
-		db: 'cdps',
-		host: 'localhost'
-    }),
-	resave: false,
-	saveUninitialized: true
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+	passport.serializeUser(api.auth.serialize);
+	passport.deserializeUser(api.auth.deserialize);
 
-// Router
+	app.use('/frontend', express.static(path.join(__dirname, '..', 'frontend')));
+	app.use(require('body-parser').json());
+	app.use(session({ 
+		secret: 'tbiurjyrb6r7b6r76r7i6r76',
+		store: new MongoStore({
+			db: db: mongoose.connections[0].db
+	    }),
+		resave: false,
+		saveUninitialized: true
+	}));
+	app.use(passport.initialize());
+	app.use(passport.session());
 
-// /
-// /login
-// /singup
-// /video/:id
-// /user/:id
+	// Router
 
-// /api/version
-// /api/user
-// /api/video
+	// /
+	// /login
+	// /singup
+	// /video/:id
+	// /user/:id
 
-app.get('/', function (req, res) {
-	res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
-});
+	// /api/version
+	// /api/user
+	// /api/video
 
-app.get ('/api/auth', api.auth.session);
-app.post('/api/auth/login', passport.authenticate('local'), api.auth.login);
-app.post('/api/auth/logout', api.auth.logout);
-app.post('/api/auth/signup', api.auth.signup);
-
-app.get ('/api/videos', api.videos.list);
-app.post('/api/video', api.auth.require.user, api.videos.create);
-app.get ('/api/video/:id', api.videos.info);
-app.put ('/api/video/:id', api.videos.require.author, api.videos.update);
-app.delete('/api/video/:id', api.videos.require.author, api.videos.delete);
-
-app.get ('/api/favourites', api.auth.require.user, api.videos.favourites);
-app.post('/api/favourite/:id', api.auth.require.user, api.videos.favourite);
-app.delete('/api/favourite/:id', api.auth.require.user, api.videos.unfavourite);
-
-app.get('/api/stats', function(req, res) {
-	res.json({
-		hostname: os.hostname()
+	app.get('/', function (req, res) {
+		res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
 	});
-});
 
-// Initialize
+	app.get ('/api/auth', api.auth.session);
+	app.post('/api/auth/login', passport.authenticate('local'), api.auth.login);
+	app.post('/api/auth/logout', api.auth.logout);
+	app.post('/api/auth/signup', api.auth.signup);
 
-var server = app.listen(8080, function () {
+	app.get ('/api/videos', api.videos.list);
+	app.post('/api/video', api.auth.require.user, api.videos.create);
+	app.get ('/api/video/:id', api.videos.info);
+	app.put ('/api/video/:id', api.videos.require.author, api.videos.update);
+	app.delete('/api/video/:id', api.videos.require.author, api.videos.delete);
 
-	var host = server.address().address;
-	var port = server.address().port;
+	app.get ('/api/favourites', api.auth.require.user, api.videos.favourites);
+	app.post('/api/favourite/:id', api.auth.require.user, api.videos.favourite);
+	app.delete('/api/favourite/:id', api.auth.require.user, api.videos.unfavourite);
 
-	winston.info('listening at port %s', port);
+	app.get('/api/stats', function(req, res) {
+		res.json({
+			hostname: os.hostname()
+		});
+	});
 
-	mongoose.connect('mongodb://localhost/cdps');
-	
-	var db = mongoose.connection;
-	db.on('error', winston.error.bind(winston, 'mongodb connection error'));
+	// Initialize
 
+	var server = app.listen(8080, function () {
+
+		var host = server.address().address;
+		var port = server.address().port;
+
+		winston.info('listening at port %s', port);
+	});
 });
