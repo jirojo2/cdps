@@ -51,7 +51,7 @@ db.on('open', function () {
 	app.use(session({ 
 		secret: 'tbiurjyrb6r7b6r76r7i6r76',
 		store: new MongoStore({
-			db: db: mongoose.connections[0].db
+			db: mongoose.connections[0].db
 	    }),
 		resave: false,
 		saveUninitialized: true
