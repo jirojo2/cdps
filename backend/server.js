@@ -4,7 +4,7 @@ var path = require('path');
 var os = require("os");
 
 var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
+var MongoStore = require('connect-mongostore')(session);
 
 var mongoose = require('mongoose');
 var models = require('./models');
