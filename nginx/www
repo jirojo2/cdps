@@ -19,6 +19,7 @@
 
 upstream www_servers {
 	server 10.1.2.14:8080;
+	server 10.1.2.15:8080;
 }
 
 server {

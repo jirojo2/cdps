@@ -1,6 +1,7 @@
 var winston = require('winston');
 var express = require('express');
 var path = require('path');
+var os = require("os");
 
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
@@ -84,6 +85,12 @@ app.delete('/api/video/:id', api.videos.require.author, api.videos.delete);
 app.get ('/api/favourites', api.auth.require.user, api.videos.favourites);
 app.post('/api/favourite/:id', api.auth.require.user, api.videos.favourite);
 app.delete('/api/favourite/:id', api.auth.require.user, api.videos.unfavourite);
+
+app.get('/api/stats', function(req, res) {
+	res.json({
+		hostname: os.hostname().
+	});
+});
 
 // Initialize
 
