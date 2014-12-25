@@ -46,8 +46,8 @@ app.use(require('body-parser').json());
 app.use(session({ 
 	secret: 'tbiurjyrb6r7b6r76r7i6r76',
 	store: new MongoStore({
-		url: 'mongodb://localhost/cdps',
-		collection: 'express-sessions'
+		db: 'cdps',
+		host: 'localhost'
     }),
 	resave: false,
 	saveUninitialized: true
