@@ -18,6 +18,7 @@
 		</h2>
 		<p>Título: {{ video.title }}</p>
 		<p>ID: {{ video._id }}</p>
+		<p>Subido por: {{ video.author.email }}</p>
 		<p>Fecha: {{ video.date }}</p>
 		<p>Descripción:</p>
 		<pre>{{ video.desc }}</pre>
