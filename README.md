@@ -33,7 +33,7 @@ cd dev
 5. A partir de los script bash preparados en (3), lanzo todos los servicios necesarios, incluyendo la preparación del glusterfs en los nas  
 6. En los servidores web lanzo las instancias de node necesarias  
 
-# ToDo  
+# Mejoras  
 * Replicar mongodb en los servidores www (http://docs.mongodb.org/manual/tutorial/deploy-replica-set/)  
 ```bash
 s4$ mongo
@@ -43,7 +43,6 @@ mongo> rs.add('s5')  # hay que esperar a que ambos se sincronicen
 s5$ mongo
 mongo> rs.slaveOk()  # wtf. pero sin esto no funciona...
 ```
-
 
 # Referencias  
 * http://glusterhacker.blogspot.com.es/2013/01/volume-files-and-sneak-peak-at.html  
