@@ -88,7 +88,7 @@ app.delete('/api/favourite/:id', api.auth.require.user, api.videos.unfavourite);
 
 app.get('/api/stats', function(req, res) {
 	res.json({
-		hostname: os.hostname().
+		hostname: os.hostname()
 	});
 });
 
