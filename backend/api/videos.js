@@ -70,6 +70,7 @@ videos.create = function(req, res) {
 
 	video_data.title = (req.body.title || '').toString();
 	video_data.desc = (req.body.desc || '').toString();
+	video_data.author = req.user._id;
 
 	var video = new Video(video_data);
 	video.save(function(err) {
