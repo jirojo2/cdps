@@ -17,7 +17,9 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/cdps');
+mongoose.connect('mongodb://localhost/cdps', { 
+	replset: { rs_name: 'cdps' }
+});
 var db = mongoose.connection;
 
 db.on('error', winston.error.bind(winston, 'mongodb connection error'));
