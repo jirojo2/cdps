@@ -17,7 +17,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var app = express();
 
-mongoose.connect('mongodb://localhost/cdps', { 
+mongoose.connect('mongodb://s4/cdps,mongodb://s5/cdps', { 
 	replset: { rs_name: 'cdps' }
 });
 var db = mongoose.connection;
