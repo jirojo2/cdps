@@ -43,7 +43,7 @@ videos.list = function(req, res) {
 videos.info = function(req, res) {
 	var videoid = req.params.id || '';
 
-	Video.findById(videoid).exec(function(err, video) {
+	Video.findById(videoid).populate('author').exec(function(err, video) {
 		res.json({ code: 0, video: video });
 	});
 }
